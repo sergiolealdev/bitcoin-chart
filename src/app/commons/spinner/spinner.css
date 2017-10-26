@@ -1,0 +1,36 @@
+:host {
+  background-color: blue;
+  display: block;
+  width: 100%;
+
+}
+
+div {
+  animation: load8 1.1s infinite linear;
+  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-left: 1.1em solid #fff;
+  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+  font-size: 10px;
+  margin: 20px auto;
+  position: relative;
+  text-indent: -9999em;
+  transform: translateZ(0);
+}
+
+div,
+div:after {
+  border-radius: 50%;
+  height: 5em;
+  width: 5em;
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
