@@ -3,6 +3,7 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import * as Rx from 'rxjs/Rx';
+import * as moment from 'moment'; // add this 1 of 4
 
 @Component({
   selector: 'app-root',
@@ -16,26 +17,44 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    let now = moment(); // add this 2 of 4
+    console.log('hello world', now.format()); // add this 3 of 4
+    console.log(now.add(7, 'days').format()); // add this 4of 4
+    //
+    /*this.http.get('https://api.coindesk.com/v1/bpi/historical/close.json?start=')
+    .map(res => res.json())
+    .subscribe(
+      (data) => {
+        const _lineChartData: Array<any> = new Array(val.value + 1);
+        arrayValues.push(parseFloat(data.bpi.USD.rate.replace(",", "")));
+        const date = new Date();
+        _lineChartData[0] = {data: new Array(val.value + 1), label: "BitCoin/USD  " + date.toDateString()};
+        for (let i = 0; i < arrayValues.length; i++) {
+          _lineChartData[0].data[i] = arrayValues[i];
+        }
+        this.lineChartData = _lineChartData;
+
+        this.lineChartLabels.push(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
+
+      }
+    );*/
+
     const source = Rx.Observable
-      .interval(5 * 1000 /* ms */)
+      .interval(2 * 1000 /* ms */)
       .timeInterval();
 
-    const myarray: any[] = [];
     const arrayValues: any[] = [];
-
+    
     const subscription = source.subscribe(val => {
 
       this.http.get('https://api.coindesk.com/v1/bpi/currentprice.json')
         .map(res => res.json())
         .subscribe(
           (data) => {
-            console.log("val:" + val.value);
-            myarray.push(val.value + "");
-
             const _lineChartData: Array<any> = new Array(val.value + 1);
             arrayValues.push(parseFloat(data.bpi.USD.rate.replace(",", "")));
             const date = new Date();
-            _lineChartData[0] = {data: new Array(val.value + 1), label: "USD/BitCoin " + date.toDateString()};
+            _lineChartData[0] = {data: new Array(val.value + 1), label: "BitCoin/USD  " + date.toDateString()};
             for (let i = 0; i < arrayValues.length; i++) {
               _lineChartData[0].data[i] = arrayValues[i];
             }
@@ -43,8 +62,6 @@ export class AppComponent implements OnInit {
 
             this.lineChartLabels.push(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
 
-            console.log(this.lineChartData);
-            console.log(this.lineChartLabels);
           }
         );
     });
