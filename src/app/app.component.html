@@ -14,9 +14,20 @@
       </div>
       <div class="col-md-4">Value</div>
       <div class="col-md-4 offset-md-4">
-        {{value2}}
+        {{oldData}}
       </div>
     </div>
   </div>
+  <a href="#" class="btn btn-xs btn-primary">Submit <span class="fa fa-arrow-circle-o-up"></span></a>
+
+    <canvas baseChart height="350" width="350"
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+
 
 </div>

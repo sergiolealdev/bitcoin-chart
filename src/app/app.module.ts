@@ -2,8 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
+import { ChartsModule } from 'ng2-charts';
+
 import { AppComponent } from './app.component';
 import {SpinnerComponent} from "./commons/spinner/spinner";
+
 
 @NgModule({
   declarations: [
@@ -12,7 +15,8 @@ import {SpinnerComponent} from "./commons/spinner/spinner";
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
