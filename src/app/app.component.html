@@ -1,33 +1,18 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{title}}!
+    USD/BITCOIN
   </h1>
-  <div *ngIf="isLoading">
-    <app-spinner></app-spinner>
+  <div style="display: block;">
+  <canvas baseChart width="400" height="400"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
   </div>
-  <div *ngIf="!isLoading" class="container">
-    <div class="row">
-      <div class="col-md-4">Value</div>
-      <div class="col-md-4 offset-md-4">
-        {{data?.bpi?.USD?.rate}}
-      </div>
-      <div class="col-md-4">Value</div>
-      <div class="col-md-4 offset-md-4">
-        {{oldData}}
-      </div>
-    </div>
-  </div>
-  <a href="#" class="btn btn-xs btn-primary">Submit <span class="fa fa-arrow-circle-o-up"></span></a>
-
-    <canvas baseChart height="350" width="350"
-            [datasets]="barChartData"
-            [labels]="barChartLabels"
-            [options]="barChartOptions"
-            [legend]="barChartLegend"
-            [chartType]="barChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
-
 
 </div>

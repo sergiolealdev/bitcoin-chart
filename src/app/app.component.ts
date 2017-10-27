@@ -9,64 +9,84 @@ import * as Rx from 'rxjs/Rx';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  title = 'app';
-  isLoading:boolean;
-  data:any;
-  value2:any;
-  oldData:any[] = [];
+export class AppComponent implements OnInit {
+
   constructor(private http: Http) {
 
   }
 
-  public barChartOptions:any = {
-    scaleShowVerticalLines: false,
+  ngOnInit() {
+    const source = Rx.Observable
+      .interval(5 * 1000 /* ms */)
+      .timeInterval();
+
+    const myarray: any[] = [];
+    const arrayValues: any[] = [];
+
+    const subscription = source.subscribe(val => {
+
+      this.http.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+        .map(res => res.json())
+        .subscribe(
+          (data) => {
+            console.log("val:" + val.value);
+            myarray.push(val.value + "");
+
+            const _lineChartData: Array<any> = new Array(val.value + 1);
+            arrayValues.push(parseFloat(data.bpi.USD.rate.replace(",", "")));
+            const date = new Date();
+            _lineChartData[0] = {data: new Array(val.value + 1), label: "USD/BitCoin " + date.toDateString()};
+            for (let i = 0; i < arrayValues.length; i++) {
+              _lineChartData[0].data[i] = arrayValues[i];
+            }
+            this.lineChartData = _lineChartData;
+
+            this.lineChartLabels.push(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
+
+            console.log(this.lineChartData);
+            console.log(this.lineChartLabels);
+          }
+        );
+    });
+  }
+
+  public lineChartColors: Array<any> = [
+    { // grey
+      backgroundColor: 'red',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
+
+  public lineChartOptions: any = {
     responsive: false
   };
 
   //Chart Labels
-  public barChartLabels:string[] = ['2011', '2012', '2013', '2014', '2015', '2016', '2017'];
-  public barChartType = 'bar';
-  public barChartLegend = true;
+  public lineChartLabels: string[] = [];
+  public lineChartType = 'line';
+  public lineChartLegend = true;
 
   //Chart data
-  public barChartData:any[] = [
+  public lineChartData: Array<any> = [
     {
-      data: [66, 55, 83, 82, 56, 51, 43],
-      label: 'Loss'
-    },
-    {
-      data: [29, 38, 40, 21, 82, 30, 89],
-      label: 'Profit'
+      data: [],
+      label: ""
     }
   ];
 
   // Chart events
-  public chartClicked(e:any):void {
+  public chartClicked(e: any): void {
     console.log(e);
   }
 
   // Chart events
-  public chartHovered(e:any):void {
+  public chartHovered(e: any): void {
     console.log(e);
   }
 
-  ngOnInit() {
-  const source = Rx.Observable
-      .interval(60 *1000 /* ms */)
-      .timeInterval();
-
-   const subscription = source.subscribe(val => {
-    this.isLoading=true;
-    this.http.get('https://api.coindesk.com/v1/bpi/currentprice.json')
-      .map(res => res.json())
-      .subscribe(
-        (data) => {
-          this.data = data;
-          this.oldData.push(data.bpi.USD.rate);
-          this.isLoading=false;
-        }
-      );
-  });}
 
 }
