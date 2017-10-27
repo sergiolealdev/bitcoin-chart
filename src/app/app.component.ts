@@ -13,21 +13,22 @@ export class AppComponent implements OnInit{
   title = 'app';
   isLoading:boolean;
   data:any;
-  value:any;
+  value2:any;
   constructor(private http: Http) {
 
   }
 
   ngOnInit() {
   var source = Rx.Observable
-      .interval(500 /* ms */)
+      .interval(1000 /* ms */)
       .timeInterval();
 
   var subscription = source.subscribe(
       function (x) {
+          this.value2 = x.value;
+          console.log("this.value2:",this.value2);
           console.log('Next: ' + x.toString());
           console.log(typeof x);
-          this.value = x;
       },
       function (err) {
           console.log('Error: ' + err);
@@ -35,7 +36,6 @@ export class AppComponent implements OnInit{
       function () {
           console.log('Completed');
       });
-    console.log("Entramos");
     this.isLoading=true;
     this.http.get('https://api.coindesk.com/v1/bpi/currentprice.json')
       .map(res => res.json())
