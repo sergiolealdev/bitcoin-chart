@@ -5,17 +5,13 @@
 }
 
 .chart{
-    position: relative;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin:auto;
-    width:20em;
+  display: flex;
+  margin:auto;
+  width: 30em;
 }
 
 .pill {
-    display:inline;
+    margin:auto;
     border: solid 2px brown;
     background-color: brown;
     font-size: 1.25em;
@@ -34,11 +30,13 @@
     border: solid 4px black;
     margin-top: 1em;
     margin: auto;
+    width: 50%;
     margin-bottom:1em;
     text-align: center;
 }
 
 .yesterdayValue{
+    margin:auto;
     color:black;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2em;
@@ -48,6 +46,7 @@
 }
 
 .currentValue{
+    margin:auto;
     color:black;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2em;
@@ -57,17 +56,15 @@
 }
 
 .variation{
-    display:inline;
+    margin:auto;
     color:white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2em;
     padding: 0.3em;
     border: solid 4px black;
     margin-top: 1em;
-    margin-left: 5em;
 
 }
-
 
 .positive {
     background-color: #9BC850;
