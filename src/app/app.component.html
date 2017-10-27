@@ -1,28 +1,26 @@
-<div>
+<div class="container">
   <h1 class="title">
     USD/BITCOIN
   </h1>
-  <div class="container">
-    <div class="yesterdayValue">
-        Value yesterday <span class="pill">{{yesterdayValue | number:'3.2-2'}}</span>
-    </div>
-    <div class="currentValue">
-      Current value <span class="pill">{{currentValue}}</span>
-    </div>
-    <div class="variation" *ngIf="variation" [ngClass]="{'positive': positiveVariation, 'negative': !positiveVariation}">
-      {{variation | number:'1.2-2'}}% <i *ngIf="positiveVariation" class="fa fa-caret-up fa-lg" aria-hidden="true"></i>
-            <i *ngIf="!positiveVariation" class="fa fa-caret-down fa-lg" aria-hidden="true"></i>
-    </div>
+  <div class="yesterdayValue">
+      Value yesterday <span class="pill">{{yesterdayValue | number:'3.2-2'}}</span>
   </div>
-  <canvas class="chart" 
-          baseChart [datasets]="lineChartData" 
-          [labels]="lineChartLabels" 
-          [options]="lineChartOptions" 
+  <div class="currentValue">
+    Current value <span class="pill">{{currentValue}}</span>
+  </div>
+  <div class="variation" *ngIf="variation" [ngClass]="{'positive': positiveVariation, 'negative': !positiveVariation}">
+    {{variation | number:'1.2-2'}}% <i *ngIf="positiveVariation" class="fa fa-caret-up fa-lg" aria-hidden="true"></i>
+          <i *ngIf="!positiveVariation" class="fa fa-caret-down fa-lg" aria-hidden="true"></i>
+  </div>
+  <canvas class="chart"
+          baseChart [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
           [colors]="lineChartColors"
-          [legend]="lineChartLegend" 
-          [chartType]="lineChartType" 
-          (chartHover)="chartHovered($event)" 
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+          (chartHover)="chartHovered($event)"
           (chartClick)="chartClicked($event)">
   </canvas>
-  
-</div>        
+
+</div>

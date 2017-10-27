@@ -47,7 +47,8 @@ table {
 
 .container {
   display: flex;
-  flex-flow: column;
+  flex-flow: row;
+  margin-left: 30%;
   margin-bottom: 1em; }
 
 .chart {
@@ -70,6 +71,7 @@ table {
   color: white; }
 
 .title {
+  display: flex;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.2em;
