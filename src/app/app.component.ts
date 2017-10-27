@@ -18,14 +18,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     let now = moment(); // add this 2 of 4
-    console.log('hello world', now.format()); // add this 3 of 4
-    console.log(now.add(7, 'days').format()); // add this 4of 4
-    //
-    /*this.http.get('https://api.coindesk.com/v1/bpi/historical/close.json?start=')
+    let url = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=' + now.subtract(30,'days') + '&end=' 
+    + now;
+    let url2 = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2017-10-01&end=2017-10-26';
+    console.log(url);
+    this.http.get(url2)
     .map(res => res.json())
     .subscribe(
       (data) => {
-        const _lineChartData: Array<any> = new Array(val.value + 1);
+        /*const _lineChartData: Array<any> = new Array(val.value + 1);
         arrayValues.push(parseFloat(data.bpi.USD.rate.replace(",", "")));
         const date = new Date();
         _lineChartData[0] = {data: new Array(val.value + 1), label: "BitCoin/USD  " + date.toDateString()};
@@ -35,9 +36,11 @@ export class AppComponent implements OnInit {
         this.lineChartData = _lineChartData;
 
         this.lineChartLabels.push(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
-
+*/
+console.log("££££££££££££££££££££££££££££££££££££££££££££££££££££££");
+console.log(data.bpi);
       }
-    );*/
+    );
 
     const source = Rx.Observable
       .interval(2 * 1000 /* ms */)
