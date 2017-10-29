@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
+import { BitcoinService } from './services/bitcoin.service';
 import {SpinnerComponent} from "./commons/spinner/spinner";
 
 
@@ -18,7 +19,7 @@ import {SpinnerComponent} from "./commons/spinner/spinner";
     HttpModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [BitcoinService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
