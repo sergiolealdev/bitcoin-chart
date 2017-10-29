@@ -55,8 +55,8 @@ export class AppComponent implements OnInit {
 
         this.lineChartLabels.push(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
         */
-        console.log("££££££££££££££££££££££££££££££££££££££££££££££££££££££");
-        console.log(data.bpi);
+//        console.log("££££££££££££££££££££££££££££££££££££££££££££££££££££££");
+//        console.log(data.bpi);
       }
       );
   }
@@ -117,12 +117,12 @@ export class AppComponent implements OnInit {
 
   // Chart events
   public chartClicked(e: any): void {
-    console.log(e);
+//    console.log(e);
   }
 
   // Chart events
   public chartHovered(e: any): void {
-    console.log(e);
+//    console.log(e);
   }
 
 
