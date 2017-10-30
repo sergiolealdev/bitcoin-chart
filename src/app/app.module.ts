@@ -6,13 +6,11 @@ import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { BitcoinService } from './services/bitcoin.service';
-import {SpinnerComponent} from "./commons/spinner/spinner";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerComponent
   ],
   imports: [
     BrowserModule,

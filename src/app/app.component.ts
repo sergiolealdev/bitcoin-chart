@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
   currentValue: any;
   variation: any;
   positiveVariation:boolean;
-  yesterdayValue;
+  yesterdayValue:any;
+
   constructor(private bitcoinService: BitcoinService) {
     this.positiveVariation = true;
   }
@@ -47,9 +48,9 @@ export class AppComponent implements OnInit {
   }
 
   private updateVariation(data:any){
-    var diff = this.currentValue - this.yesterdayValue;
-    this.positiveVariation = diff>0;
-    this.variation = this.yesterdayValue/this.currentValue;      
+    var diff = this.yesterdayValue - this.currentValue;
+    this.positiveVariation = diff<0;
+    this.variation = Math.abs(diff/this.yesterdayValue*100);      
   }
 
   private getHistoric() {
@@ -78,7 +79,7 @@ export class AppComponent implements OnInit {
     this.currentValue = this.getFloatValue(data);
   }
 
-  private getFloatValue(data: any) {
+  private getFloatValue(data: any):number {
     return parseFloat(data.USD.last)
   }
 
