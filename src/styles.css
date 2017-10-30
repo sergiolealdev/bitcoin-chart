@@ -45,14 +45,14 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-body {
-  background-color: blue; }
+#bitcoinChart {
+  width: 20em; }
 
 @media only screen and (min-width: 45em) {
-  body {
-    background-color: yellow; } }
+  #bitcoinChart {
+    width: 45em; } }
 @media only screen and (min-width: 64.25em) {
-  body {
-    background-color: black; } }
+  #bitcoinChart {
+    width: 64em; } }
 
 /*# sourceMappingURL=styles.css.map */

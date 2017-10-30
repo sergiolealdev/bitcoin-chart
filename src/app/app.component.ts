@@ -12,11 +12,11 @@ import * as Rx from 'rxjs/Rx';
 })
 export class AppComponent implements OnInit {
 
-  timer:number = 5*1000;/* ms */
+  timer: number = 5 * 1000;/* ms */
   arrayValues: any[] = [];
   currentValue: any;
   variation: any;
-  constructor(private bitcoinService:BitcoinService) {
+  constructor(private bitcoinService: BitcoinService) {
 
   }
 
@@ -31,13 +31,13 @@ export class AppComponent implements OnInit {
       .timeInterval();
 
     const subscription = source.subscribe(val => {
-      this.bitcoinService.getCurrentValue().subscribe(data=>{
-        this.updateChart(data,val);
+      this.bitcoinService.getCurrentValue().subscribe(data => {
+        this.updateChart(data, val);
         this.updateBpiValue(data);
       });
-      
+
     });
-      
+
 
   }
 
@@ -55,10 +55,10 @@ export class AppComponent implements OnInit {
 
         this.lineChartLabels.push(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
         */
-//        console.log("££££££££££££££££££££££££££££££££££££££££££££££££££££££");
-//        console.log(data.bpi);
+        //        console.log("££££££££££££££££££££££££££££££££££££££££££££££££££££££");
+        //        console.log(data.bpi);
       }
-      );
+    );
   }
 
   private updateChart(data: any, val: any) {
@@ -117,12 +117,12 @@ export class AppComponent implements OnInit {
 
   // Chart events
   public chartClicked(e: any): void {
-//    console.log(e);
+    //    console.log(e);
   }
 
   // Chart events
   public chartHovered(e: any): void {
-//    console.log(e);
+    //    console.log(e);
   }
 
 
