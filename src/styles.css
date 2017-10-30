@@ -62,32 +62,30 @@ table {
   background-color: #3227ca;
   border: solid 4px black;
   margin-top: 1em;
-  margin-left: 30%;
-  margin-right: 30%;
+  margin: auto;
+  width: 60%;
   margin-bottom: 1em;
   text-align: center; }
 
 .yesterdayValue {
-  display: inline-flex;
+  margin: auto;
+  width: 25%;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.2em;
   padding: 0.3em;
   margin-top: 1em;
-  margin-left: 40%;
-  margin-bottom: 1em;
-  clear: both; }
+  margin-bottom: 1em; }
 
 .currentValue {
-  display: inline-flex;
+  margin: auto;
+  width: 25%;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.2em;
   padding: 0.3em;
   margin-top: 1em;
-  margin-left: 40%;
-  margin-bottom: 1em;
-  clear: both; }
+  margin-bottom: 1em; }
 
 .variation {
   display: inline-flex;
@@ -97,6 +95,7 @@ table {
   padding: 0.3em;
   border: solid 4px black;
   margin-top: 1em;
+  margin-left: 40%;
   margin-bottom: 1em; }
 
 .myicon {
