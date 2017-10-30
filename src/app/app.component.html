@@ -1,18 +1,22 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
+<div>
+  <h1 class="title">
     USD/BITCOIN
   </h1>
-  <div id="currentValue">
-
-    {{currentValue}}---{{variation}}
-
-
+  <div class="currentValue">
+    {{currentValue}}
   </div>
-  <div style="display:inline-block">
-    <canvas id="bitcoinChart" baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
-      [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  <div class="variation" [ngClass]="{'positive': positiveVariation, 'negative': !positiveVariation}">
+    2.61% <div *ngIf="positiveVariation" class="myicon"><i class="fa fa-caret-up fa-lg" aria-hidden="true"></i></div>
+          <div *ngIf="!positiveVariation" class="myicon"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i></div>
   </div>
-
-
+  <canvas class="chart" 
+        baseChart [datasets]="lineChartData" 
+        [labels]="lineChartLabels" 
+        [options]="lineChartOptions" 
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend" 
+        [chartType]="lineChartType" 
+        (chartHover)="chartHovered($event)" 
+        (chartClick)="chartClicked($event)">
+  </canvas>
 </div>        

@@ -16,8 +16,9 @@ export class AppComponent implements OnInit {
   arrayValues: any[] = [];
   currentValue: any;
   variation: any;
+  positiveVariation:boolean;
   constructor(private bitcoinService: BitcoinService) {
-
+    this.positiveVariation = true;
   }
 
   ngOnInit() {
@@ -89,7 +90,7 @@ export class AppComponent implements OnInit {
 
   public lineChartColors: Array<any> = [
     { // grey
-      backgroundColor: 'red',
+      backgroundColor: '#DD5A3E',
       borderColor: 'rgba(148,159,177,1)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
