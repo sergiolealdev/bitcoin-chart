@@ -18,12 +18,8 @@ export class BitcoinService {
     }
 
     public getHistoric(){
-        let now = moment(); // add this 2 of 4
-        let url = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=' + now.subtract(30, 'days') + '&end='
-          + now;
-        let url2 = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2017-10-01&end=2017-10-26';
-//        console.log(url);
-        return this.http.get(url2)
+        let url = 'https://api.coindesk.com/v1/bpi/historical/close.json';
+        return this.http.get(url)
         .map(res => res.json());
     }
 }

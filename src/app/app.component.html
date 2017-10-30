@@ -2,11 +2,14 @@
   <h1 class="title">
     USD/BITCOIN
   </h1>
+  <div class="yesterdayValue">
+      Value Yesterday {{yesterdayValue | number:'3.2-2'}}
+    </div>
   <div class="currentValue">
     {{currentValue}}
   </div>
-  <div class="variation" [ngClass]="{'positive': positiveVariation, 'negative': !positiveVariation}">
-    2.61% <div *ngIf="positiveVariation" class="myicon"><i class="fa fa-caret-up fa-lg" aria-hidden="true"></i></div>
+  <div class="variation" *ngIf="variation" [ngClass]="{'positive': positiveVariation, 'negative': !positiveVariation}">
+    {{variation | number:'1.2-2'}}% <div *ngIf="positiveVariation" class="myicon"><i class="fa fa-caret-up fa-lg" aria-hidden="true"></i></div>
           <div *ngIf="!positiveVariation" class="myicon"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i></div>
   </div>
     <canvas class="chart" 
